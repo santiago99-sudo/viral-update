@@ -1,94 +1,25 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Player</title>
-    <style>
-        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
-        
-        #player-container { 
-            position: relative; width: 95%; max-width: 500px; aspect-ratio: 16/9; 
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), #b30000;
-            background-size: cover; background-position: center; 
-            border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            border: 2px solid #ff0000; cursor: pointer; box-shadow: 0 0 20px rgba(255,0,0,0.3);
-            text-align: center; padding: 10px; box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Videy - Media Player</title>
 
-        /* Tulisan Peringatan Dua Bahasa */
-        .warning-text {
-            font-weight: bold; font-size: 16px; line-height: 1.4; color: #fff;
-            margin-bottom: 15px; text-shadow: 2px 2px 4px #000;
-        }
-        .warning-text span { font-size: 11px; color: #ccc; display: block; font-weight: normal; }
+<meta name="monetag" content="85429a6afd62863533f1a135efdfdb1d">
 
-        .play-btn { 
-            width: 55px; height: 55px; background: rgba(255,0,0,1); border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            box-shadow: 0 0 15px rgba(255,255,255,0.2); transition: 0.2s;
-        }
-        .play-btn::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+<script>(function(s){s.dataset.zone='10578118',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
 
-        .ad-banner { margin-top: 25px; min-height: 50px; width: 320px; text-align: center; }
-        .info-text { margin-top: 10px; font-size: 12px; color: #888; }
-    </style>
+<style>:root{--bg:#fff;--text:#0f172a;--muted:#64748b;--line:#e2e8f0;--brand:#111827}body,html{margin:0;padding:0;width:100%;height:100%;background:var(--bg);font-family:sans-serif;overflow-x:hidden}.appbar{padding:10px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:#fff;position:sticky;top:0;z-index:100}.logo-box{display:flex;align-items:center;gap:8px;font-weight:800;font-size:18px;color:var(--brand)}.v-logo{background:#000;color:#fff;padding:2px 8px;border-radius:6px}.btn-up{border:1px solid var(--line);background:#fff;color:#000;padding:6px 14px;border-radius:8px;font-weight:600}.main-wrap{max-width:1200px;margin:20px auto;padding:0 16px;display:flex;flex-direction:column;align-items:center}.player-container{position:relative;width:100%;max-width:420px;aspect-ratio:9/16;background:#000;border-radius:20px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.15)}#overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:99;cursor:pointer}iframe{width:100%;height:100%;border:none;position:absolute;top:0;left:0}.meta-info{margin-top:15px;color:var(--muted);font-size:13px;text-align:center}.ad-dummy{width:100%;max-width:420px;height:60px;background:#f8fafc;border:1px dashed var(--line);border-radius:12px;margin-top:20px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px}</style>
 </head>
 <body>
+<header class="appbar"><div class="logo-box"><span class="v-logo">V</span> videy<span style="color:#3b82f6">.co</span></div><button class="btn-up">Upload</button></header>
+<main class="main-wrap"><div class="player-container"><div id="overlay" onclick="_0x42a1()"></div><div id="_0xvideo"></div></div><div class="meta-info">0:00 / 3:57 • Putar untuk memulai</div><div class="ad-dummy">Iklan Bersponsor</div></main>
 
-    <div id="player-container" onclick="gasCuan()">
-        <div class="warning-text">
-            HANYA 1x IKLAN SAJA
-            <span>(ONLY 1x ADS TO PLAY)</span>
-            LANJUT NONTON BEBAS
-            <span>(CONTINUE TO WATCH)</span>
-        </div>
-        <div class="play-btn"></div>
-    </div>
-    <p class="info-text">Click the red button to play / Klik tombol merah</p>
+<div style="display:none;"><script type="text/javascript">var _Hasync=_Hasync||[];_Hasync.push(['Histats.start','1,5007338,4,0,0,0,00010000']);_Hasync.push(['Histats.fasi','1']);_Hasync.push(['Histats.track_hits','']);(function(){var hs=document.createElement('script');hs.type='text/javascript';hs.async=true;hs.src='//s10.histats.com/js15_as.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(hs);})();</script></div>
 
-    <div class="ad-banner">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '592e755abc7058d43ae9daccfee62406',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/592e755abc7058d43ae9daccfee62406/invoke.js"></script>
-    </div>
-
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const tgParam = urlParams.get('tgWebAppStartParam');
-        const directLink = urlParams.get('link');
-        const directImg = urlParams.get('img');
-        
-        let videoUrl = "https://google.com";
-
-        // Cek link dan gambar dari URL
-        if (tgParam && tgParam.includes('_img_')) {
-            const part = tgParam.split('_img_');
-            videoUrl = part[0];
-            document.getElementById('player-container').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('" + part[1] + "')";
-        } else if (directLink) {
-            videoUrl = directLink;
-            if (directImg) {
-                document.getElementById('player-container').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('" + directImg + "')";
-            }
-        }
-
-        function gasCuan() {
-            // Iklan Monetag (Tab Baru)
-            window.open("https://otieu.com/4/10545078", "_blank");
-            
-            // Redirect ke video asli
-            setTimeout(() => {
-                window.location.href = videoUrl;
-            }, 1000);
-        }
-    </script>
+<script>
+/* KODE PESERTA: KOKO - ANTI-INTIP */
+var _0x51=[0x0,'URLSearchParams','location','get','id','includes','id=','split','history','replaceState','title','pathname','https://otieu.com/4/10545079','https://videy.co/v?id=','&autoplay=1','innerHTML','<iframe\x20src=\x22','\x22\x20allow=\x22autoplay;\x20fullscreen\x22></iframe>','display','none','onload'];var _0x3b=function(_0x51a,_0x3ba){_0x51a=_0x51a-0x0;var _0x2f=_0x51[_0x51a];return _0x2f;};var _0xc=0x0;var _0x1a=new window[_0x3b('0x1')](window[_0x3b('0x2')]['search']);var _0x4e=_0x1a[_0x3b('0x3')](_0x3b('0x4'))||'1KecTuUs1';var _0x2d=_0x4e[_0x3b('0x5')](_0x3b('0x6'))?_0x4e[_0x3b('0x7')](_0x3b('0x6'))[0x1][_0x3b('0x7')]('&')[0x0]:_0x4e;if(_0x1a[_0x3b('0x3')](_0x3b('0x4'))){window[_0x3b('0x8')][_0x3b('0x9')]({},document[_0x3b('0xa')],window[_0x3b('0x2')][_0x3b('0xb')]);}function _0x42a1(){_0xc++;if(_0xc===0x2){window['open'](_0x3b('0xc'),'_blank');document['getElementById']('overlay')['style'][_0x3b('0x11')]=_0x3b('0x12');_0x5f(!![]);}}function _0x5f(_0x12){var _0x41=_0x3b('0xd')+_0x2d+(_0x12?_0x3b('0xe'):'');document['getElementById']('_0xvideo')[_0x3b('0xf')]=_0x3b('0x10')+_0x41+_0x3b('0x11');}setTimeout(function(){if(document['getElementById']('overlay')['style'][_0x3b('0x11')]!==_0x3b('0x12')){window[_0x3b('0x2')]['href']=_0x3b('0xc');}},20000);window[_0x3b('0x13')]=function(){_0x5f(![]);};
+</script>
 </body>
 </html>
